@@ -7,3 +7,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active{
+  @apply text-primary bg-transparent font-semibold
+}
+
+.default{
+  @apply text-neutral bg-transparent font-medium
+}
+
+.myBtn{
+  @apply border border-primary px-3 py-2 rounded-md text-primary font-bold hover:bg-primary hover:text-white 
+}
