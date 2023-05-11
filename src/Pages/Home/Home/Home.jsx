@@ -6,6 +6,7 @@ import Contact from '../Contact/Contact';
 import PopularProduct from '../PopularProduct/PopularProduct';
 import Team from '../Team/Team';
 import Features from '../Features/Features';
+import Testimonial from '../Testimonial/Testimonial';
 
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
             <PopularProduct />
             <Team />
             <Features />
+            <Testimonial />
 
         </section>
     );
