@@ -22,6 +22,7 @@ const ServiceDetails = () => {
                         </div>
                     </div>
                 </div>
+                
                 <div className='flex flex-col lg:flex-row gap-10 my-10 lg:mt-20'>
                     <div className='w-full lg:w-3/4'>
                         <img src={img} alt="" className='rounded-xl' />
