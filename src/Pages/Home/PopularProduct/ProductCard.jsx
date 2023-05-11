@@ -12,12 +12,12 @@ const ProductCard = ({ product }) => {
                 </figure>
                 <div className="card-body text-center items-center">
                     <div>
-                    <Rating
-  placeholderRating={rating}
-  emptySymbol={<FaStar className='h-5 w-5'/>}
-  placeholderSymbol={<FaStar className='text-yellow-500 h-5 w-5'/>}
-  fullSymbol={<FaStar className='text-yellow-500 h-5 w-5'/>}
-/>
+                        <Rating
+                            placeholderRating={rating}
+                            emptySymbol={<FaStar className='h-5 w-5' />}
+                            placeholderSymbol={<FaStar className='text-yellow-500 h-5 w-5' />}
+                            fullSymbol={<FaStar className='text-yellow-500 h-5 w-5' />}
+                        />
                     </div>
                     <h2 className="card-title mb-2">{title}</h2>
                     <div className="card-actions">
