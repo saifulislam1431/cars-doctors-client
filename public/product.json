@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "title" : "Car Engine Plug",
+        "img": "https://i.ibb.co/9ZNPXc2/6.png",
+        "price" : 20,
+        "rating" : 5.0
+    },
+    {
+        "id": 2,
+        "title" : "Cools Led Light",
+        "img": "https://i.ibb.co/8BT9yWc/3.png",
+        "price" : 23,
+        "rating" : 5.0
+    },
+    {
+        "id": 3,
+        "title" : "Car Air Filter",
+        "img": "https://i.ibb.co/xMPk6y6/2.png",
+        "price" : 30,
+        "rating" : 5.0
+    },
+    {
+        "id": 4,
+        "title" : "Car Wheels",
+        "img": "https://i.ibb.co/GdhrLj7/5.png",
+        "price" : 50,
+        "rating" : 5.0
+    },
+    {
+        "id": 5,
+        "title" : "Car Springs",
+        "img": "https://i.ibb.co/xMPk6y6/2.png",
+        "price" : 20,
+        "rating" : 5.0
+    },
+    {
+        "id": 6,
+        "title" : "Car Supper Battery",
+        "img": "https://i.ibb.co/FxXMQ0t/4.png",
+        "price" : 60,
+        "rating" : 5.0
+    }
+]
