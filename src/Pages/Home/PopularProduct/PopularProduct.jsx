@@ -5,7 +5,7 @@ const PopularProduct = () => {
     const [products, setProducts] = useState([]);
     const[showAll , setShowAll] = useState(false);
     useEffect(() => {
-        fetch("../../../../public/product.json")
+        fetch("http://localhost:5000/products")
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
@@ -20,7 +20,7 @@ const PopularProduct = () => {
             <div className='my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {
                     products.slice(0, showAll ? 6 : 6).map(product=><ProductCard
-                    key={product.id}
+                    key={product._id}
                     product={product}
                     ></ProductCard>)
                 }
