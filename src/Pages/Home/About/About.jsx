@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import parts from "../../../assets/images/about_us/parts.jpg"
 import person from "../../../assets/images/about_us/person.jpg"
+import { UserContext } from '../../../Provider/Auth/Auth';
 
 const About = () => {
+
     return (
         <section>
             <div className="hero min-h-screen">
