@@ -82,10 +82,6 @@ const Register = () => {
             });
             setError("")
 
-            updateProfile(loggedUser, {
-                displayName: name
-            }).then(() => console.log("Update")).catch((error) => console.log(error.message))
-
         })
         .catch((error) => {
             toast.error(error.message, {
@@ -117,10 +113,6 @@ const Register = () => {
                 theme: "dark",
             });
             setError("")
-
-            updateProfile(loggedUser, {
-                displayName: name
-            }).then(() => console.log("Update")).catch((error) => console.log(error.message))
 
         })
         .catch((error) => {
