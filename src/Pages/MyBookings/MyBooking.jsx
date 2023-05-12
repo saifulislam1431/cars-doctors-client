@@ -48,7 +48,8 @@ const MyBooking = () => {
                         <tbody>
 
                             {
-                                order.map(or => <BookingSummary key={or._id} order={or}></BookingSummary>)
+                                order.map(or => <BookingSummary key={or._id} oldOrder={or} setOrder = {setOrder}
+                                order={order}></BookingSummary>)
                             }
 
                         </tbody>
