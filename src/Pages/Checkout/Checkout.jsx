@@ -1,12 +1,54 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import serviceImg from "../../assets/images/checkout/checkout.png";
 import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { UserContext } from '../../Provider/Auth/Auth';
 
 const Checkout = () => {
     const service = useLoaderData();
+    const {user} = useContext(UserContext)
 
     const handleCheckOut = e => {
         e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const amount = form.amount.value;
+        const phone = form.phone.value;
+        const date = form.date.value;
+        const message = form.message.value;
+        const order ={
+            customerName : name,
+            advanceAmount : amount,
+            totalPrice : service?.price,
+            phone,
+            serviceDate : date,
+            message,
+            serviceId : service?._id,
+            serviceTitle: service?.title,
+            serviceImg: service?.img
+
+        }
+        console.log(order);
+
+        fetch(`http://localhost:5000/bookings`,{
+            method:"POST",
+            headers:{
+                "content-type" : "application/json"
+            },
+            body: JSON.stringify(order)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Order Successful',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  })
+            }
+        })
     }
     return (
         <section className='my-10 flex items-center justify-center'>
@@ -30,12 +72,14 @@ const Checkout = () => {
                             <div className='md:w-1/2'>
 
                                 <input type="text"
-                                    name='firstName' placeholder="First Name" className="w-full inputField" />
+                                    name='name' 
+                                    defaultValue={user.displayName}
+                                    placeholder="Your Name" className="w-full inputField" />
                             </div>
                             <div className='md:w-1/2'>
 
                                 <input type="text"
-                                    name='lastName' placeholder="Last Name" className="w-full inputField" />
+                                    name='amount' placeholder={`Advance Amount $${service.price}`}  className="w-full inputField" />
                             </div>
                         </div>
                         {/* Phone & email */}
@@ -47,18 +91,18 @@ const Checkout = () => {
                             </div>
                             <div className='md:w-1/2'>
 
-                                <input type="text"
-                                    name='email' placeholder="Your email" className="w-full inputField" />
+                                <input type="date"
+                                    name='date' className="w-full inputField" />
                             </div>
                         </div>
 
 
-                        {/* Photo url */}
+                        {/* massage */}
                         <div className='mt-2'>
                             <div>
                                 <textarea
                                     rows={8}
-                                    name=',massage' placeholder="Your Massage" className="w-full inputField" />
+                                    name='message' placeholder="Your Message" className="w-full inputField" />
                             </div>
 
                         </div>

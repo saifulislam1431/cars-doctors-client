@@ -1,8 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FaShoppingBag, FaSearch } from "react-icons/fa";
+import { FaShoppingBag, FaSearch, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import logo from "../../../assets/images/logo.svg"
+import { UserContext } from '../../../Provider/Auth/Auth';
+import { toast } from 'react-toastify';
 const Navbar = () => {
+    const { user, logOut } = useContext(UserContext);
+    const handleOut = () => {
+        logOut()
+            .then(() => {
+                toast.success('Log Out Successful!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+            })
+            .catch((error) => {
+                toast.error(error.message, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+            })
+    }
     const navItems = <>
         <li>
             <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "default")} >Home</NavLink>
@@ -19,6 +49,15 @@ const Navbar = () => {
         <li>
             <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : "default")} >Contact</NavLink>
         </li>
+        <li>
+            {
+                user ? 
+                    <NavLink to="/login" className={({ isActive }) => (isActive ? "active" : "default")}  onClick={handleOut}><span>Log Out</span> <FaSignOutAlt className='text-primary' /></NavLink>
+              
+                    :
+                    <NavLink to="/login" className={({ isActive }) => (isActive ? "active" : "default")} ><span>Login</span> <FaSignInAlt className='text-primary' /></NavLink>
+            }
+        </li>
     </>
     return (
         <main>
@@ -34,7 +73,7 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <Link to="/">
-                            <img src={logo} alt="" className='w-[68px] md:w-20'/>
+                            <img src={logo} alt="" className='w-[68px] md:w-20' />
                         </Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
