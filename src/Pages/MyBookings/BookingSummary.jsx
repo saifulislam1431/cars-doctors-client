@@ -1,9 +1,9 @@
 import React from 'react';
 import { HiXCircle } from "react-icons/hi";
 import Swal from 'sweetalert2';
-const BookingSummary = ({ oldOrder,setOrder,order }) => {
+const BookingSummary = ({ oldOrder, setOrder, order }) => {
     // console.log(oldOrder);
-    const { _id, serviceTitle, serviceDate, serviceImg, totalPrice, advanceAmount } = oldOrder;
+    const { _id, serviceTitle, serviceDate, serviceImg, totalPrice, advanceAmount, status } = oldOrder;
 
     const remainingPrice = parseFloat(totalPrice) - parseFloat(advanceAmount);
 
@@ -32,11 +32,37 @@ const BookingSummary = ({ oldOrder,setOrder,order }) => {
                                 'success'
                             )
                             const remainingOrder = order.filter(allOrder => allOrder._id !== id)
-                            setOrder(remainingOrder) 
+                            setOrder(remainingOrder)
                         }
                     })
             }
         })
+    }
+    const handleConfirm = id => {
+        console.log(id);
+        fetch(`http://localhost:5000/bookings/${id}`, {
+            method: "PATCH",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({ status: "confirm" })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    const remaining = order.filter(or => or._id !== id)
+                    const updated = order.find(or => or._id === id)
+                    updated.status = "confirm";
+                    const newOrder = [updated, ...remaining]
+                    setOrder(newOrder);
+                    Swal.fire({
+                        title: 'success!',
+                        text: 'Order Confirmed',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+            })
     }
     return (
         <tr>
@@ -58,7 +84,10 @@ const BookingSummary = ({ oldOrder,setOrder,order }) => {
                 <span className='font-semibold'>{serviceDate}</span>
             </td>
             <td>
-                <button className='bg-primary px-3 py-1 rounded-lg text-white'>Pending</button>
+                {
+                    status === "confirm" ? <button className='border border-success px-3 py-1 rounded-lg text-green-600 font-semibold'>Confirmed</button> :
+                        <button className='bg-primary px-3 py-1 rounded-lg text-white' onClick={() => handleConfirm(_id)}>Tap to confirm</button>
+                }
             </td>
         </tr>
 
