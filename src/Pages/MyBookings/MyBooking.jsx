@@ -10,7 +10,7 @@ const MyBooking = () => {
     console.log(user);
     const [order, setOrder] = useState([])
 
-    const url = `http://localhost:5000/bookings?email=${user.email}`
+    const url = `https://cars-doctors-server-saifulislam1431.vercel.app/bookings?email=${user.email}`
 
     useEffect(() => {
         fetch(url)
