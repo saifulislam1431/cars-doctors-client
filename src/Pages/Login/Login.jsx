@@ -61,6 +61,7 @@ const Login = () => {
         googleIn()
         .then(res => {
             const loggedUser = res.user;
+            // console.log(loggedUser);
             navigate(from, { replace: true });
             toast.success('Registration Successful!', {
                 position: "top-center",

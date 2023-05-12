@@ -51,9 +51,13 @@ const Navbar = () => {
         </li>
         <li>
             {
-                user ? 
-                    <NavLink to="/login" className={({ isActive }) => (isActive ? "active" : "default")}  onClick={handleOut}><span>Log Out</span> <FaSignOutAlt className='text-primary' /></NavLink>
-              
+                user ?
+                    <>
+                        <NavLink to="/login" className={({ isActive }) => (isActive ? "active" : "default")} onClick={handleOut}><span>Log Out</span> <FaSignOutAlt className='text-primary' /></NavLink>
+                   
+                        <NavLink to="/myBookings" className={({ isActive }) => (isActive ? "active" : "default")}><span>My Bookings</span>  <FaShoppingBag className='w-5 h-4 text-primary' /></NavLink>
+                    </>
+
                     :
                     <NavLink to="/login" className={({ isActive }) => (isActive ? "active" : "default")} ><span>Login</span> <FaSignInAlt className='text-primary' /></NavLink>
             }
@@ -83,9 +87,7 @@ const Navbar = () => {
                     </div>
                     <div className="navbar-end">
                         <div className='inline-flex gap-2 mr-3'>
-                            <Link to="/">
-                                <FaShoppingBag className='w-5 h-4' />
-                            </Link>
+
                             <Link to="/">
                                 <FaSearch className='w-5 h-4' />
                             </Link>

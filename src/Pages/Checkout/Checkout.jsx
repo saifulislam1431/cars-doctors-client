@@ -13,14 +13,14 @@ const Checkout = () => {
         const form = e.target;
         const name = form.name.value;
         const amount = form.amount.value;
-        const phone = form.phone.value;
+        const email = form.email.value;
         const date = form.date.value;
         const message = form.message.value;
         const order ={
             customerName : name,
             advanceAmount : amount,
             totalPrice : service?.price,
-            phone,
+            email,
             serviceDate : date,
             message,
             serviceId : service?._id,
@@ -87,7 +87,9 @@ const Checkout = () => {
                             <div className='md:w-1/2'>
 
                                 <input type="text"
-                                    name='phone' placeholder="Your Phone" className="w-full inputField" />
+                                    name='email' 
+                                    defaultValue={user.email}
+                                    placeholder="Your email" className="w-full inputField" />
                             </div>
                             <div className='md:w-1/2'>
 
