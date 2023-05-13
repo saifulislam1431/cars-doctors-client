@@ -7,13 +7,18 @@ import { Link } from 'react-router-dom';
 
 const MyBooking = () => {
     const { user } = useContext(UserContext);
-    console.log(user);
+    // console.log(user);
     const [order, setOrder] = useState([])
 
-    const url = `https://cars-doctors-server-saifulislam1431.vercel.app/bookings?email=${user.email}`
+    const url = `http://localhost:5000/bookings?email=${user.email}`
 
     useEffect(() => {
-        fetch(url)
+        fetch(url,{
+            method:"GET",
+            headers:{
+               authorization : `Bearer ${localStorage.getItem("car-access-token")}`
+            }
+        })
             .then(res => res.json())
             .then(data => setOrder(data))
     }, [])

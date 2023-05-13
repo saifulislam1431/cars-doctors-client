@@ -30,7 +30,7 @@ const Checkout = () => {
         }
         console.log(order);
 
-        fetch(`https://cars-doctors-server-saifulislam1431.vercel.app/bookings`,{
+        fetch(`http://localhost:5000/bookings`,{
             method:"POST",
             headers:{
                 "content-type" : "application/json"

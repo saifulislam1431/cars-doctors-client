@@ -9,6 +9,7 @@ const Navbar = () => {
     const handleOut = () => {
         logOut()
             .then(() => {
+                localStorage.removeItem('car-access-token')
                 toast.success('Log Out Successful!', {
                     position: "top-center",
                     autoClose: 5000,

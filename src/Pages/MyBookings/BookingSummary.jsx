@@ -40,7 +40,7 @@ const BookingSummary = ({ oldOrder, setOrder, order }) => {
     }
     const handleConfirm = id => {
         console.log(id);
-        fetch(`https://cars-doctors-server-saifulislam1431.vercel.app/bookings/${id}`, {
+        fetch(`http://localhost:5000/bookings/${id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"

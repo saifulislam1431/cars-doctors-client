@@ -5,7 +5,7 @@ const Service = () => {
     const [services, setServices] = useState([]);
     const[showAll , setShowAll] = useState(false);
     useEffect(() => {
-        fetch("https://cars-doctors-server-saifulislam1431.vercel.app/services")
+        fetch("http://localhost:5000/services")
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])

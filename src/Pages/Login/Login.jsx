@@ -29,7 +29,8 @@ const Login = () => {
         sigIn(email, password)
             .then(res => {
                 const loggedUser = res.user;
-                navigate(from, { replace: true });
+                navigate(from, { replace: true })
+                
                 toast.success('Login Successful!', {
                     position: "top-center",
                     autoClose: 5000,
@@ -62,8 +63,10 @@ const Login = () => {
         .then(res => {
             const loggedUser = res.user;
             // console.log(loggedUser);
-            navigate(from, { replace: true });
-            toast.success('Registration Successful!', {
+            navigate(from, { replace: true })
+
+            
+            toast.success('Login Successful!', {
                 position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -93,7 +96,8 @@ const Login = () => {
         facebookIn()
         .then(res => {
             const loggedUser = res.user;
-            navigate(from, { replace: true });
+            navigate(from, { replace: true })
+
             toast.success('Login Successful!', {
                 position: "top-center",
                 autoClose: 5000,
