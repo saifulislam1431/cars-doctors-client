@@ -20,7 +20,7 @@ const BookingSummary = ({ oldOrder, setOrder, order }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/bookings/${id}`, {
+                fetch(`https://cars-doctors-server.vercel.app/bookings/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -40,7 +40,7 @@ const BookingSummary = ({ oldOrder, setOrder, order }) => {
     }
     const handleConfirm = id => {
         console.log(id);
-        fetch(`http://localhost:5000/bookings/${id}`, {
+        fetch(`https://cars-doctors-server.vercel.app/bookings/${id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"

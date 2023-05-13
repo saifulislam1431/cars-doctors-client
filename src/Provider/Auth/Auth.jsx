@@ -47,7 +47,7 @@ const Auth = ({children}) => {
                 const loggedUserEmail = {
                    email : currentUser.email
                 };
-                fetch(`http://localhost:5000/jwt`, {
+                fetch(`https://cars-doctors-server.vercel.app/jwt`, {
                 method: "POST",
                 headers:{ "content-type" : "application/json"},
                 body: JSON.stringify(loggedUserEmail)
